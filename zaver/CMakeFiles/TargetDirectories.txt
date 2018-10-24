@@ -1,0 +1,8 @@
+/home/dong/code/build/zaver/CMakeFiles/edit_cache.dir
+/home/dong/code/build/zaver/CMakeFiles/rebuild_cache.dir
+/home/dong/code/build/zaver/CMakeFiles/zaver.dir
+/home/dong/code/build/zaver/tests/CMakeFiles/rebuild_cache.dir
+/home/dong/code/build/zaver/tests/CMakeFiles/thread_pool_test.dir
+/home/dong/code/build/zaver/tests/CMakeFiles/edit_cache.dir
+/home/dong/code/build/zaver/tests/CMakeFiles/priority_queue_test.dir
+/home/dong/code/build/zaver/tests/CMakeFiles/list_test.dir

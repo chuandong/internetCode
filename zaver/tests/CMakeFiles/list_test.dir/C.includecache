@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dong/code/build/zaver/tests/list_test.c
+list.h
+-
+dbg.h
+-
+
+src/dbg.h
+stdio.h
+-
+errno.h
+-
+string.h
+-
+stdlib.h
+-
+stdarg.h
+-
+time.h
+-
+sys/time.h
+-
+sys/timeb.h
+-
+
+src/list.h
+
