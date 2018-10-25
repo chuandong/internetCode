@@ -40,7 +40,6 @@ CMakeFiles/zaver.dir/src/http_request.c.o
 CMakeFiles/zaver.dir/src/log.c.o
  /home/dong/code/build/zaver/src/dbg.h
  /home/dong/code/build/zaver/src/log.c
- /home/dong/code/build/zaver/src/threadpool.h
 CMakeFiles/zaver.dir/src/priority_queue.c.o
  /home/dong/code/build/zaver/src/dbg.h
  /home/dong/code/build/zaver/src/error.h

@@ -11,17 +11,19 @@ struct epoll_event *events;
 
 int zv_epoll_create(int flags) {
     int fd = epoll_create1(flags);
-    check(fd > 0, "zv_epoll_create: epoll_create1");
+    if (fd > 0)
+    	BASLOG(LOG_LEVEL_DEBUG, "zv_epoll_create: epoll_create1 fd:[%d]", fd);
 
     events = (struct epoll_event *)malloc(sizeof(struct epoll_event) * MAXEVENTS);
-    check(events != NULL, "zv_epoll_create: malloc");
+    if (events != NULL)
+    	BASLOG(LOG_LEVEL_DEBUG, "zv_epoll_create: malloc");
     return fd;
 }
 
 void zv_epoll_add(int epfd, int fd, struct epoll_event *event) {
     int rc = epoll_ctl(epfd, EPOLL_CTL_ADD, fd, event);
     if (rc == 0)
-    BASLOG(LOG_LEVEL_DEBUG, "zv_epoll_add: epoll_ctl");
+    	BASLOG(LOG_LEVEL_DEBUG, "zv_epoll_add: epoll_ctl");
     return;
 }
 

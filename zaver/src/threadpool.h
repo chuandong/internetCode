@@ -7,10 +7,6 @@
 #ifndef THREADPOOL_H
 #define THREADPOOL_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -50,9 +46,5 @@ zv_threadpool_t *threadpool_init(int thread_num);
 int threadpool_add(zv_threadpool_t *pool, void (*func)(void *), void *arg);
 
 int threadpool_destroy(zv_threadpool_t *pool, int gracegul);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

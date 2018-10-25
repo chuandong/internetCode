@@ -27,6 +27,8 @@ sys/timeb.h
 /home/dong/code/build/zaver/src/threadpool.c
 threadpool.h
 /home/dong/code/build/zaver/src/threadpool.h
+dbg.h
+/home/dong/code/build/zaver/src/dbg.h
 
 /home/dong/code/build/zaver/src/threadpool.h
 stdlib.h

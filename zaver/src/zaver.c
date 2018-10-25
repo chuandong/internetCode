@@ -87,7 +87,8 @@ int main(int argc, char* argv[]) {
     char conf_buf[BUFLEN];
     zv_conf_t cf;
     rc = read_conf(conf_file, &cf, conf_buf, BUFLEN);
-    check(rc == ZV_CONF_OK, "read conf err");
+    if (ZV_CONF_OK != rc)
+    	BASLOG(LOG_LEVEL_ERROR, "read conf err");
 
     /*
     *   install signal handle for SIGPIPE
@@ -110,7 +111,7 @@ int main(int argc, char* argv[]) {
     struct sockaddr_in clientaddr;
     // initialize clientaddr and inlen to solve "accept Invalid argument" bug
     socklen_t inlen = 1;
-    memset(&clientaddr, 0, sizeof(struct sockaddr_in));  
+    memset(&clientaddr, 0x00, sizeof(struct sockaddr_in));  
     
     listenfd = open_listenfd(cf.port);
     rc = make_socket_non_blocking(listenfd);
@@ -133,10 +134,11 @@ int main(int argc, char* argv[]) {
     /*
     * create thread pool
     */
-    /*
+    
     zv_threadpool_t *tp = threadpool_init(cf.thread_num);
-    check(tp != NULL, "threadpool_init error");
-    */
+    if (tp != NULL)
+    	BASLOG(LOG_LEVEL_ERROR, "threadpool_init error");
+    
     
     /*
      * initialize timer

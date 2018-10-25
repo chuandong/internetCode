@@ -18,22 +18,23 @@
 
 int open_listenfd(int port) 
 {
+	int listenfd;
+	
+	struct sockaddr_in serveraddr;
+	
     if (port <= 0) {
         port = 3000;
     }
-
-    int listenfd, optval=1;
-    struct sockaddr_in serveraddr;
   
     /* Create a socket descriptor */
     if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
 	    return -1;
- 
+ 	//int optval=1;
     /* Eliminates "Address already in use" error from bind. */
-    if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, 
+    /*if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, 
 		   (const void *)&optval , sizeof(int)) < 0)
 	    return -1;
-
+	*/
     /* Listenfd will be an endpoint for all requests to port
        on any IP address for this host */
     bzero((char *) &serveraddr, sizeof(serveraddr));
@@ -89,9 +90,8 @@ int read_conf(char *filename, zv_conf_t *cf, char *buf, int len) {
 
     while (fgets(cur_pos, len-pos, fp)) {
         delim_pos = strstr(cur_pos, DELIM);
-        BASLOG(LOG_LEVEL_DEBUG, "cur_pos:[%s],delim_pos:[%s]", cur_pos, delim_pos);
-        line_len = strlen(cur_pos);
         
+        line_len = strlen(cur_pos);
         /*
         debug("read one line from conf: %s, len = %d", cur_pos, line_len);
         */
@@ -109,10 +109,11 @@ int read_conf(char *filename, zv_conf_t *cf, char *buf, int len) {
         if (strncmp("port", cur_pos, 4) == 0) {
             cf->port = atoi(delim_pos + 1);     
         }
-
+		
         if (strncmp("threadnum", cur_pos, 9) == 0) {
             cf->thread_num = atoi(delim_pos + 1);
         }
+        
 
         cur_pos += line_len;
     }

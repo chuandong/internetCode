@@ -93,7 +93,7 @@ void do_request(void *ptr) {
         BASLOG(LOG_LEVEL_DEBUG, "method == %.*s", (int)(r->method_end - r->request_start), (char *)r->request_start);
         BASLOG(LOG_LEVEL_DEBUG, "uri == %.*s", (int)(r->uri_end - r->uri_start), (char *)r->uri_start);
 
-        debug("ready to parse request body");
+        BASLOG(LOG_LEVEL_DEBUG, "ready to parse request body");
         rc = zv_http_parse_request_body(r);
         if (rc == ZV_AGAIN) {
             continue;
@@ -170,10 +170,10 @@ static void parse_uri(char *uri, int uri_length, char *filename, char *querystri
     int file_length;
     if (question_mark) {
         file_length = (int)(question_mark - uri);
-        debug("file_length = (question_mark - uri) = %d", file_length);
+        BASLOG(LOG_LEVEL_DEBUG, "file_length = (question_mark - uri) = %d", file_length);
     } else {
         file_length = uri_length;
-        debug("file_length = uri_length = %d", file_length);
+        BASLOG(LOG_LEVEL_DEBUG, "file_length = uri_length = %d", file_length);
     }
 
     if (querystring) {
@@ -188,7 +188,7 @@ static void parse_uri(char *uri, int uri_length, char *filename, char *querystri
         return;
     }
 
-    debug("before strncat, filename = %s, uri = %.*s, file_len = %d", filename, file_length, uri, file_length);
+    BASLOG(LOG_LEVEL_DEBUG, "before strncat, filename = %s, uri = %.*s, file_len = %d", filename, file_length, uri, file_length);
     strncat(filename, uri, file_length);
 
     char *last_comp = strrchr(filename, '/');

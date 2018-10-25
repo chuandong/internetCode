@@ -5,6 +5,7 @@
  */
 
 #include "threadpool.h"
+#include "dbg.h"
 
 typedef enum {
     immediate_shutdown = 1,
@@ -16,7 +17,7 @@ static void *threadpool_worker(void *arg);
 
 zv_threadpool_t *threadpool_init(int thread_num) {
     if (thread_num <= 0) {
-        log_info( "the arg of threadpool_init must greater than 0");
+        log_info("the arg of threadpool_init must greater than 0");
         return NULL;
     }
 
@@ -55,7 +56,7 @@ zv_threadpool_t *threadpool_init(int thread_num) {
             threadpool_destroy(pool, 0);
             return NULL;
         }
-        log_info( "thread: %08x started", (uint32_t) pool->threads[i]);
+        log_info("thread: %08x started", (uint32_t) pool->threads[i]);
 
         pool->thread_count++;
         pool->started++;

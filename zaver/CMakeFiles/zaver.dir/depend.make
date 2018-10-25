@@ -39,7 +39,6 @@ CMakeFiles/zaver.dir/src/http_request.c.o: src/util.h
 
 CMakeFiles/zaver.dir/src/log.c.o: src/dbg.h
 CMakeFiles/zaver.dir/src/log.c.o: src/log.c
-CMakeFiles/zaver.dir/src/log.c.o: src/threadpool.h
 
 CMakeFiles/zaver.dir/src/priority_queue.c.o: src/dbg.h
 CMakeFiles/zaver.dir/src/priority_queue.c.o: src/error.h
